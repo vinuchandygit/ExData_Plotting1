@@ -14,4 +14,6 @@ house_a_data$Date <- as.Date(house_a_data$Date,"%d/%m/%Y")
 house_a_data<-cbind(house_a_data, "DateTime" = as.POSIXct(paste(house_a_data$Date, house_a_data$Time)))
 
 #Plotting Code
+png("plot1.png", width=480, height=480)
 hist(as.numeric(house_a_data$Global_active_power), col="Red", main="Global Active Power", xlab="Global Active power (kilowatts)", ylab="Frequency")
+dev.off()

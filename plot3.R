@@ -14,9 +14,12 @@ house_a_data$Date <- as.Date(house_a_data$Date,"%d/%m/%Y")
 house_a_data<-cbind(house_a_data, "DateTime" = as.POSIXct(paste(house_a_data$Date, house_a_data$Time)))
 
 #Plotting Code
+png("plot3.png", width=480, height=480)
 
 with(house_a_data, {plot(Sub_metering_1 ~ DateTime, type="l", xlab= "", ylab="Energy Sub Metering")})
 
 lines(house_a_data$Sub_metering_2 ~ house_a_data$DateTime, col = 'Red')
 lines(house_a_data$Sub_metering_3 ~ house_a_data$DateTime, col = 'Blue')
 legend("topright", lty=1, lwd =3, col=c("black","red","blue") ,legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+
+dev.off()

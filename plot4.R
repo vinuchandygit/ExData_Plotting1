@@ -14,6 +14,7 @@ house_a_data$Date <- as.Date(house_a_data$Date,"%d/%m/%Y")
 house_a_data<-cbind(house_a_data, "DateTime" = as.POSIXct(paste(house_a_data$Date, house_a_data$Time)))
 
 #Plotting Code
+png("plot4.png", width=480, height=480)
 
 par(mfrow=c(2,2))
 plot(house_a_data$Global_active_power ~ house_a_data$DateTime, type="l")
@@ -24,3 +25,5 @@ lines(house_a_data$Sub_metering_2 ~ house_a_data$DateTime, col = 'Red')
 lines(house_a_data$Sub_metering_3 ~ house_a_data$DateTime, col = 'Blue')
 
 plot(house_a_data$Global_reactive_power ~ house_a_data$DateTime, type="l")
+
+dev.off()
